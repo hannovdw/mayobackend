@@ -19,8 +19,8 @@ router.post('/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-    const user = new User({
-        userEmail: req.body.email,
+    const User = new User({
+        userEmail: req.body.userSignUp.userEmail,
         userPassword: hashedPassword,
         companyname:req.body.companyname,
         basicdesc: req.body.basicdesc,
@@ -37,9 +37,24 @@ router.post('/register', async (req, res) => {
         res.status(500).send(err);
     }
 })
+/*
+function ClassifyData(data) {
+    var email = "";
+    var mobile = "";
 
+    email = data.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
+    mobile = data.match(/(?<!\d)\d{10}(?!\d)/g);
+
+    return {
+        email : email ? true : false,
+        mobile : mobile ? true : false,
+    }
+}
+*/
 
 router.post('/login', async (req, res) => {
+
+    
 
     console.log(req.body);
 
@@ -60,6 +75,7 @@ router.post('/login', async (req, res) => {
         status: "Success",
         message: "Logged In"
     });
+    
 })
 
 router.post('/validatetoken', verify, async (req, res) => {

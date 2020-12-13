@@ -5,8 +5,8 @@ const cors = require('cors');
 var multer = require('multer');
 const helmet = require('helmet');
 const compression = require('compression');
-const authRoute = require('./routes/auth');
-const adminRoute = require('./routes/admin');
+const authRoute = require('./Routes/auth');
+const adminRoute = require('./Routes/Admin');
 const User = require('./Models/User');
 
 
@@ -28,11 +28,11 @@ mongoose.connect('mongodb+srv://Hanno:Hanno@mayodb.1wizl.mongodb.net/mayodb?retr
 app.get('/api/getdata',(req,res)=>{
 
     const user = new User({
-        userEmail: "anus@anusmail.com",
-        userPassword: "anus123",
-        companyname:"Anus corp",
-        basicdesc: "ons het anusse",
-        detaildesc: "ons het baie anusse"
+        userEmail: "dewaldanus@anusmail.com",
+        userPassword: "anus1235",
+        companyname:"Anus dewald corp",
+        basicdesc: "ons het dewald anusse",
+        detaildesc: "ons het baie dewald anusse"
     });
 
     user.save();
