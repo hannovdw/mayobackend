@@ -2,12 +2,14 @@
 const Joi = require('@hapi/joi');
 
 function RegisterValidation(data) {
-    const schema = {
+    const schema = Joi.Object({
         userEmail: Joi.string().optional().email(),
         userPassword: Joi.string().min(4).required(),
-    }
+    })
 
-    return Joi.validate(data, schema);
+   // return Joi.validate(data, schema);
+    const validation = schema.validate(req.body);
+    return validation;
 }
 
 

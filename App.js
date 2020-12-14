@@ -28,7 +28,7 @@ mongoose.connect('mongodb+srv://Hanno:Hanno@mayodb.1wizl.mongodb.net/mayodb?retr
 app.get('/api/getdata',(req,res)=>{
 
     const user = new User({
-        userEmail: "dewaldanus@anusmail.com",
+        userEmail: "ivananus@anusmail.com",
         userPassword: "anus1235",
         companyname:"Anus dewald corp",
         basicdesc: "ons het dewald anusse",
@@ -46,5 +46,5 @@ app.listen(port, ()=> console.log(`Listening on port ${port}...`));
 //CREATE SERVER..........................
 
 //use the routes
-app.use('/admin', adminRoute);
+app.use('/Admin', adminRoute);
 app.use('/auth', authRoute);

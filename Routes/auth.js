@@ -1,30 +1,41 @@
 const router = require('express').Router();
 const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
-const { RegisterValidation, LoginValidation } = require('../validation');
+
 const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
 
+
 router.post('/register', async (req, res) => {
-    const { error } = RegisterValidation(req.body);
+    
 
-    if (error) return res.status(400).send(error.details[0].message);
+   
 
-    const emailExist = await User.findOne({ email: req.body.email });
+    const emailExist = await User.findOne({ userEmail: req.body.userEmail });
 
     if (emailExist) return res.status(400).send('Email already exists.');
 
-    console.log(req.body.password);
+    console.log(req.body.userPassword);
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
 
-    const User = new User({
-        userEmail: req.body.userSignUp.userEmail,
+    /*
+    "cellNum": "0843637749",
+    "website": "backendispoeskak@gmail.com",
+    "hourlyRate": "750" 
+    */
+
+
+    const user = new User({
+        userEmail: req.body.userEmail,
         userPassword: hashedPassword,
         companyname:req.body.companyname,
         basicdesc: req.body.basicdesc,
-        detaildesc: req.body.detaildesc
+        detaildesc: req.body.detaildesc,
+        cellNum: req.body.cellNum,
+        website: req.body.website,
+        hourlyRate: req.body.hourlyRate
     });
 
     try {
@@ -53,8 +64,6 @@ function ClassifyData(data) {
 */
 
 router.post('/login', async (req, res) => {
-
-    
 
     console.log(req.body);
 
