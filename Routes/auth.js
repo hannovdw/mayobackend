@@ -67,15 +67,15 @@ router.post('/login', async (req, res) => {
 
     console.log(req.body);
 
-    const { error } = LoginValidation(req.body);
+    
 
-    if (error) return res.status(400).send({ 'error': error.details[0].message });
+    
 
-    const user = await User.findOne({ email: req.body.email }, function (err, obj) { if (err) console.log(err); });
+    const user = await User.findOne({ userEmail: req.body.userEmail }, function (err, obj) { if (err) console.log(err); });
 
     if (!user) return res.status(400).send('Email or password is incorrect');
 
-    const validPass = await bcrypt.compare(req.body.password, user.password);
+    const validPass = await bcrypt.compare(req.body.userPassword, user.userPassword);
     if (!validPass) return res.status(400).send('Email or password is incorrect');
 
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
