@@ -15,7 +15,7 @@ router.post('/getlisting', async (req, res) => {
         res.send({
             status: "Success",
             message: "User found",
-            data : obj
+            data : user
         });
 
     }
