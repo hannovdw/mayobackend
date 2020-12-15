@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
 
 
+
 router.post('/register', async (req, res) => {
     
 
@@ -77,20 +78,22 @@ router.post('/login', async (req, res) => {
 
     const validPass = await bcrypt.compare(req.body.userPassword, user.userPassword);
     if (!validPass) return res.status(400).send('Email or password is incorrect');
-
-    const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-
+    
+    //const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+    /*
     res.status(200).header('auth-token', token).send({
         status: "Success",
         message: "Logged In"
     });
-    
+    */
 })
 
+/*
 router.post('/validatetoken', verify, async (req, res) => {
     res.status(200).send({
         tokenValid: true
     });
 });
+*/
 
 module.exports = router
