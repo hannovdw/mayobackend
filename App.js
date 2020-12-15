@@ -9,7 +9,7 @@ const authRoute = require('./Routes/auth');
 const adminRoute = require('./Routes/Admin');
 const User = require('./Models/User');
 const dotenv = require('dotenv');
-const listingRoute = require('./Routes/getListing');
+const listingRoute = require('./Routes/getlisting');
 
 //DOTENV
 dotenv.config();

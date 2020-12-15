@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { string } = require('joi');
 const User = require('../Models/User');
-var email = "";
+
 
 router.post('/getlisting', async (req, res) => {
 
@@ -20,7 +19,7 @@ router.post('/getlisting', async (req, res) => {
 
     }
 
-
+   
 })
 
 module.exports = router;
