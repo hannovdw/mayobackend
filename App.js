@@ -9,6 +9,7 @@ const authRoute = require('./Routes/auth');
 const adminRoute = require('./Routes/Admin');
 const User = require('./Models/User');
 const dotenv = require('dotenv');
+const listingRoute = require('./Routes/getListing');
 
 //DOTENV
 dotenv.config();
@@ -50,3 +51,4 @@ app.listen(port, ()=> console.log(`Listening on port ${port}...`));
 //use the routes
 app.use('/Admin', adminRoute);
 app.use('/auth', authRoute);
+app.use('/getListing',listingRoute);
