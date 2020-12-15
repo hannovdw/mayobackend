@@ -13,8 +13,8 @@ const User = require('./Models/User');
 //MIDDLEWARE.......................
 app.use(express.json());
 app.use(cors());
-app.use(helmet());
-app.use(compression());
+//app.use(helmet());
+//app.use(compression());
 //MIDDLEWARE.......................
 
 //MONGODB ATLAS CONECTION AND SCHEMA..............
