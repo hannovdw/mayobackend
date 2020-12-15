@@ -8,8 +8,10 @@ const compression = require('compression');
 const authRoute = require('./Routes/auth');
 const adminRoute = require('./Routes/Admin');
 const User = require('./Models/User');
+const dotenv = require('dotenv');
 
-
+//DOTENV
+dotenv.config();
 //MIDDLEWARE.......................
 app.use(express.json());
 app.use(cors());
@@ -18,7 +20,7 @@ app.use(compression());
 //MIDDLEWARE.......................
 
 //MONGODB ATLAS CONECTION AND SCHEMA..............
-mongoose.connect('mongodb+srv://Hanno:Hanno@mayodb.1wizl.mongodb.net/mayodb?retryWrites=true&w=majority',{ useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false})
+mongoose.connect(process.env.DB_CONNECT,{ useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false})
 .then(()=> console.log('Conected to MongoDB Atlas...'))
 .catch(err => console.error('could not connect to MongoDB Atlass',err));
 
