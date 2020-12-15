@@ -51,4 +51,4 @@ app.listen(port, ()=> console.log(`Listening on port ${port}...`));
 //use the routes
 app.use('/Admin', adminRoute);
 app.use('/auth', authRoute);
-app.use('/getListing',listingRoute);
+app.use('/getlisting',listingRoute);
