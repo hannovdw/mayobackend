@@ -1,16 +1,15 @@
 const router = require('express').Router();
 const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
-
+const { req, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
 
 
 
 router.post('/register', async (req, res) => {
-    
 
-   
+    
 
     const emailExist = await User.findOne({ userEmail: req.body.userEmail });
 
@@ -20,6 +19,15 @@ router.post('/register', async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
+
+    req.body.userEmail.isEmail(),
+    // password must be at least 5 chars long
+    req.body.userPassword.isLength({ min: 4 })
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     /*
     "cellNum": "0843637749",
@@ -38,6 +46,7 @@ router.post('/register', async (req, res) => {
         website: req.body.website,
         hourlyRate: req.body.hourlyRate
     });
+
 
     try {
         const savedUser = await user.save();
@@ -67,8 +76,6 @@ function ClassifyData(data) {
 router.post('/login', async (req, res) => {
 
     console.log(req.body);
-
-    
 
     
 
