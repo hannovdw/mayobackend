@@ -22,16 +22,18 @@ router.post('/register', async (req, res) => {
 
     req.body.userEmail.isEmail(),
     // password must be at least 5 chars long
-    req.body.userPassword.isLength({ min: 4 })
+    req.body.userPassword.isLength({ min: 4 }),
     // Finds the validation errors in this request and wraps them in an object with handy functions
+    (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    }
 
     /*
     "cellNum": "0843637749",
-    "website": "backendispoeskak@gmail.com",
+    "website": "backend@gmail.com",
     "hourlyRate": "750" 
     */
 
@@ -49,7 +51,7 @@ router.post('/register', async (req, res) => {
 
 
     try {
-        const savedUser = await user.save();
+        const savedUser = await User.save();
         res.send({
             status: "Success",
             message: "User created successfully."
