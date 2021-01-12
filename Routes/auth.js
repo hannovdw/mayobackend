@@ -12,7 +12,7 @@ const validateLoginInput = require('../login');
 //Register Route
 router.post('/register', async (req, res) => {
 
-    
+    console.log(req.body);
     const { errors, isValid } = validateRegisterInput(req.body);
 
     // Check validation
