@@ -49,20 +49,7 @@ router.post('/register', async (req, res) => {
         }  //End of if else statement above const new user
     });
 })
-/*
-function ClassifyData(data) {
-    var email = "";
-    var mobile = "";
 
-    email = data.match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi);
-    mobile = data.match(/(?<!\d)\d{10}(?!\d)/g);
-
-    return {
-        email : email ? true : false,
-        mobile : mobile ? true : false,
-    }
-}
-*/
 
 //Login Route
 router.post('/login',async (req,res) => {
@@ -82,7 +69,7 @@ router.post('/login',async (req,res) => {
     console.log(req.body);
 
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-
+    
     res.status(200).header('auth-token', token).send({
         status: "Success",
         message: "Logged In"
