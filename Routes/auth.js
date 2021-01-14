@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
-const { req, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
 
@@ -30,10 +29,7 @@ router.post('/register', async (req, res) => {
                 companyname: req.body.companyname,
                 basicdesc: req.body.basicdesc,
                 detaildesc: req.body.detaildesc,
-                cellNum: req.body.cellNum,
-                website: req.body.website,
-                hourlyRate: req.body.hourlyRate,
-                date: req.body.date
+                cellNum: req.body.cellNum
             });
         // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {

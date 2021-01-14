@@ -2,7 +2,6 @@ const Validator = require('validator');
 const isEmpty = require('is-empty');
 
 module.exports = function validateRegisterInput(data) {
-    var cellNum = "";
     let errors = {};
   // Convert empty fields to an empty string so we can use validator functions
     
@@ -28,7 +27,6 @@ module.exports = function validateRegisterInput(data) {
   if (!Validator.equals(data.userPassword, data.userPassword2)) {
       errors.userPassword2 = "Passwords must match";
     }
-  //if (!data.cellNum == data.match((/(?<!\d)\d{10}(?!\d)/g)))
   return {
       errors,
       isValid: isEmpty(errors)
