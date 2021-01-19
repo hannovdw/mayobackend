@@ -26,10 +26,15 @@ router.post('/register', async (req, res) => {
             const newUser = new User({
                 userEmail: req.body.userEmail,
                 userPassword: req.body.userPassword,
-                companyname: req.body.companyname,
-                basicdesc: req.body.basicdesc,
-                detaildesc: req.body.detaildesc,
-                cellNum: req.body.cellNum
+                companyName: req.body.companyname,
+                basicDesc: req.body.basicdesc,
+                detailDesc: req.body.detaildesc,
+                cellNum: req.body.cellNum,
+                website: req.body.website,
+                hourlyRate: req.body.hourlyRate,
+                instaURL: req.body.instaURL,
+                twitterURL: req.body.twitterURL,
+                facebookURL: req.body.facebookURL
             });
         // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {

@@ -1,3 +1,4 @@
+const { binary } = require('joi');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -39,12 +40,16 @@ const userSchema = new mongoose.Schema({
         max: 1024,
         min: 6
     },
-    companyname: String,
-    basicdesc: String,
-    detaildesc: String,
+    companyName: String,
+    basicDesc: String,
+    detailDesc: String,
     cellNum: String,
     website: String,
-    hourlyRate: String
+    hourlyRate: String,
+    instaURL: String,
+    twitterURL: String,
+    facebookURL: String,
+    companyLogo: Buffer
     
 
 });
