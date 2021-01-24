@@ -5,7 +5,7 @@ const User = require('../Models/User');
 router.post('/sendarray', async (req, res) => {
 
     {
-        var data = User.find().toArray();
+        var data = "pous"
         res.send({
             data : data
         });
