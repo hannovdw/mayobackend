@@ -11,6 +11,7 @@ const User = require('./Models/User');
 const dotenv = require('dotenv');
 const listingRoute = require('./Routes/getlisting');
 const arrayRoute = require('./Routes/arraylistings');
+const userRoute = require('./Routes/user');
 
 //DOTENV
 dotenv.config();
@@ -23,7 +24,7 @@ app.use(cors());
 
 //MONGODB ATLAS CONECTION AND SCHEMA..............
 mongoose.connect(process.env.DB_CONNECT,{ useUnifiedTopology: true,useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false})
-.then(()=> console.log('Conected to MongoDB Atlas...'))
+.then(()=> console.log('Connected to MongoDB Atlas...'))
 .catch(err => console.error('could not connect to MongoDB Atlass',err));
 
 //MONGODB ATLAS CONECTION..............
@@ -53,4 +54,5 @@ app.listen(port, ()=> console.log(`Listening on port ${port}...`));
 app.use('/Admin', adminRoute);
 app.use('/auth', authRoute);
 app.use('/getlisting',listingRoute);
+app.use('/user', userRoute);
 app.use('/akkedis', arrayRoute);
