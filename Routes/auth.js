@@ -39,23 +39,24 @@ router.post('/register', async (req, res) => {
 
             
         // Hash password before saving in database
-      bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.userPassword, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.userPassword = hash;
-          newUser
-            .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
-        });
-        });
-        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-            res.header('Access-Control-Expose-Headers', 'auth-token')
-            res.status(200).header('auth-token', token).send({
-              status: "Success",
-              message: "Logged In"
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newUser.userPassword, salt, (err, hash) => {
+                if (err) throw err;
+                newUser.userPassword = hash;
+                newUser
+                    .save()
+                    .then(user => {
+                        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+                        res.header('Access-Control-Expose-Headers', 'auth-token')
+                        res.status(200).header('auth-token', token).send({
+                            status: "Success",
+                            message: "Logged In"
+                        });
+                    })
+                    .catch(err => console.log(err));
             });
-        }  //End of if else statement above const new user
+        });
+    }  //End of if else statement above const new user
     });
     
 })
