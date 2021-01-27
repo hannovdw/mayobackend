@@ -36,6 +36,8 @@ router.post('/register', async (req, res) => {
                 twitterURL: req.body.twitterURL,
                 facebookURL: req.body.facebookURL
             });
+
+            
         // Hash password before saving in database
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.userPassword, salt, (err, hash) => {
@@ -47,8 +49,15 @@ router.post('/register', async (req, res) => {
             .catch(err => console.log(err));
         });
         });
+        const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+            res.header('Access-Control-Expose-Headers', 'auth-token')
+            res.status(200).header('auth-token', token).send({
+              status: "Success",
+              message: "Logged In"
+            });
         }  //End of if else statement above const new user
     });
+    
 })
 
 

@@ -20,12 +20,15 @@ router.get('/getdata', tokenVerification, async (req, res) => {
       userEmail = user.userEmail
       cellNum = user.cellNum
       website = user.website
+      hourlyRate = user.hourlyRate
+      
 
       var response = {
         totalClicks: 123,
         monthlyClicks: 20,
         name: companyName,
         location: "Centurion",
+        hourlyRate: hourlyRate,
         contactInformation: {
           work: "Plumbing",
           website: website,
