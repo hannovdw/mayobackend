@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const verify = require('./verifyToken');
 
 router.post('/register', async (req, res) => {
+
+
     const { error } = RegisterValidation(req.body);
 
     if (error) return res.status(400).send(error.details[0].message);
@@ -13,8 +15,6 @@ router.post('/register', async (req, res) => {
     const emailExist = await Admin.findOne({ email: req.body.userEmail });
 
     if (emailExist) return res.status(400).send('Email already exists.');
-
-    console.log(req.body.password);
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
