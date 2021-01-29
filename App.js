@@ -6,8 +6,7 @@ var multer = require('multer');
 const helmet = require('helmet');
 const compression = require('compression');
 const authRoute = require('./Routes/auth');
-const adminRoute = require('./Routes/Admin');
-const User = require('./Models/User');
+const adminRoute = require('./Routes/adminAuth');
 const dotenv = require('dotenv');
 const userRoute = require('./Routes/user');
 const homeRoute = require('./Routes/home');
@@ -28,21 +27,7 @@ mongoose.connect(process.env.DB_CONNECT,{ useUnifiedTopology: true,useNewUrlPars
 
 //MONGODB ATLAS CONECTION..............
 
-//GET REQUEST...........................
-app.get('/api/getdata',(req,res)=>{
 
-    const user = new User({
-        userEmail: "ivananus@anusmail.com",
-        userPassword: "anus1235",
-        companyname:"Anus dewald corp",
-        basicdesc: "ons het dewald anusse",
-        detaildesc: "ons het baie dewald anusse"
-    });
-
-    user.save();
-    return res.send(user);
-});
-//GET REQUEST...........................
 
 //CREATE SERVER..........................
 const port = process.env.PORT || 3000;
@@ -50,7 +35,7 @@ app.listen(port, ()=> console.log(`Listening on port ${port}...`));
 //CREATE SERVER..........................
 
 //use the routes
-app.use('/Admin', adminRoute);
+app.use('/admin', adminRoute);
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/home', homeRoute);

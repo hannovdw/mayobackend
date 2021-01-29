@@ -1,4 +1,4 @@
-const { binary } = require('joi');
+const { binary, boolean } = require('joi');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
@@ -51,7 +51,6 @@ const userSchema = new mongoose.Schema({
     facebookURL: String,
     image64: String,
     imageName: String
-    
 
 });
 
