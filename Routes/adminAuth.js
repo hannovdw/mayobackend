@@ -54,7 +54,7 @@ router.post('/login',async (req,res) => {
 
     if (error) return res.status(400).send({ 'error': error.details[0].message });
 
-    const admin = await admin.findOne({ adminEmail: req.body.adminEmail }, function (err, obj) { if (err) console.log(err); });
+    const admin = await Admin.findOne({ adminEmail: req.body.adminEmail }, function (err, obj) { if (err) console.log(err); });
     console.log(admin);
     if (!admin) return res.status(400).send('Email or password is incorrect');
 
