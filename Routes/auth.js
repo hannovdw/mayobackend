@@ -34,7 +34,9 @@ router.post('/register', async (req, res) => {
                 hourlyRate: req.body.hourlyRate,
                 instaURL: req.body.instaURL,
                 twitterURL: req.body.twitterURL,
-                facebookURL: req.body.facebookURL
+                facebookURL: req.body.facebookURL,
+                image64: req.body.image64,
+                imageName: req.body.imageName
             });
 
             

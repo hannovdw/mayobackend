@@ -49,7 +49,8 @@ const userSchema = new mongoose.Schema({
     instaURL: String,
     twitterURL: String,
     facebookURL: String,
-    companyLogo: Buffer
+    image64: String,
+    imageName: String
     
 
 });
