@@ -32,9 +32,9 @@ router.post('/register', async (req, res) => {
                 cellNum: req.body.cellNum,
                 website: req.body.website,
                 hourlyRate: req.body.hourlyRate,
-                instaURL: req.body.instaURL,
-                twitterURL: req.body.twitterURL,
-                facebookURL: req.body.facebookURL,
+                instaURL: req.body.instagram,
+                twitterURL: req.body.twitter,
+                facebookURL: req.body.facebook,
                 image64: req.body.image64,
                 imageName: req.body.imageName,
                 active: req.body.active
