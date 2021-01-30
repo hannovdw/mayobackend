@@ -5,14 +5,14 @@ const bcrypt = require('bcryptjs');
 const verify = require('./verifyAdmin');
 
 //Validation
-const validateRegisterInput = require('../register');
-const validateLoginInput = require('../login');
+const validateAdminRegisterInput = require('../registerAdmin');
+const validateAdminLoginInput = require('../loginAdmin');
 
 //Register Route
 router.post('/register', async (req, res) => {
 
     console.log(req.body);
-    const { errors, isValid } = validateRegisterInput(req.body);
+    const { errors, isValid } = validateAdminRegisterInput(req.body);
 
     // Check validation
     if (!isValid) {
@@ -50,11 +50,11 @@ router.post('/login',async (req,res) => {
 
     console.log(req.body);
 
-    const { error } = validateLoginInput(req.body);
+    const { error } = validateAdminLoginInput(req.body);
 
     if (error) return res.status(400).send({ 'error': error.details[0].message });
 
-    const admin = await admin.findOne({ adminEmail: req.body.adminEmail }, function (err, obj) { if (err) console.log(err); });
+    const admin = await Admin.findOne({ adminEmail: req.body.adminEmail }, function (err, obj) { if (err) console.log(err); });
     console.log(admin);
     if (!admin) return res.status(400).send('Email or password is incorrect');
 
