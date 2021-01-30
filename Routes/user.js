@@ -15,6 +15,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
   var instagram = "mmm";
   var twitter = "mmm";
   var facebook = "mmm";
+  var active = "";
 
 
   User.findOne({ _id: userId }).then(user => {
@@ -29,6 +30,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
       instagram = user.instaURL
       twitter = user.twitterURL
       facebook = user.facebookURL
+      active = user.active
 
 
       var response = {
@@ -39,6 +41,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
         hourlyRate: hourlyRate,
         basicDesc: basicDesc,
         detailDesc: detailedDesc,
+        active: active,
         contactInformation: {
           work: "Plumbing",
           website: website,

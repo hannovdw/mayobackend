@@ -50,7 +50,8 @@ const userSchema = new mongoose.Schema({
     twitterURL: String,
     facebookURL: String,
     image64: String,
-    imageName: String
+    imageName: String,
+    active: Boolean
 
 });
 
