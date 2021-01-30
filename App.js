@@ -10,6 +10,7 @@ const adminRoute = require('./Routes/adminAuth');
 const dotenv = require('dotenv');
 const userRoute = require('./Routes/user');
 const homeRoute = require('./Routes/home');
+const activateRoute = require('./Routes/activation');
 
 //DOTENV
 dotenv.config();
@@ -39,3 +40,4 @@ app.use('/admin', adminRoute);
 app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/home', homeRoute);
+app.use('/active',activateRoute);

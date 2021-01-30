@@ -7,32 +7,7 @@ const verify = require('./verifyAdmin');
 //Validation
 const validateAdminRegisterInput = require('../registerAdmin');
 const validateAdminLoginInput = require('../loginAdmin');
-const { db } = require('../Models/Admin');
 
-//Route to deactivate account
-router.post('/deactivate', async (req, res) => {
-    db.collection.update(
-        { "userEmail":req.body.userEmail}, 
-        { 
-            "$set": { 
-                "active" : false
-            }
-        } 
-    );
-});
-
-//Route to activate account
-router.post('/activate', async (req, res) => {
-    db.collection.update(
-        { "userEmail":req.body.userEmail}, 
-        { 
-            "$set": { 
-                "active" : true
-            }
-        } 
-    );
-    res.send("success");
-});
 
 
 
