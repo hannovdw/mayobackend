@@ -10,7 +10,7 @@ const validateLoginInput = require('../login');
 const { db } = require('../Models/Admin');
 
 //Route to deactivate account
-router.post('/deactivate', verify, async (req, res) => {
+router.post('/deactivate', async (req, res) => {
     db.collection.update(
         { "userEmail":req.body.userEmail}, 
         { 
@@ -22,7 +22,7 @@ router.post('/deactivate', verify, async (req, res) => {
 });
 
 //Route to activate account
-router.post('/activate', verify, async (req, res) => {
+router.post('/activate', async (req, res) => {
     db.collection.update(
         { "userEmail":req.body.userEmail}, 
         { 
@@ -31,6 +31,7 @@ router.post('/activate', verify, async (req, res) => {
             }
         } 
     );
+    res.send("success");
 });
 
 
