@@ -1,10 +1,12 @@
 const router = require('express').Router();
 
-const { db } = require('../Models/User');
+
+const User = require('../Models/User');
+
 
 //Route to deactivate account
 router.post('/deactivate', async (req, res) => {
-    db.collection.update(
+    User.collection.update(
         { "userEmail":req.body.userEmail}, 
         { 
             "$set": { 
@@ -17,7 +19,7 @@ router.post('/deactivate', async (req, res) => {
 
 //Route to activate account
 router.post('/activate', async (req, res) => {
-    db.collection.update(
+    User.collection.update(
         { "userEmail":req.body.userEmail}, 
         { 
             "$set": { 
