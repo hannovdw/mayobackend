@@ -16,6 +16,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
   var twitter = "mmm";
   var facebook = "mmm";
   var active = "";
+  var image = "";
 
 
   User.findOne({ _id: userId }).then(user => {
@@ -31,7 +32,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
       twitter = user.twitterURL
       facebook = user.facebookURL
       active = user.active
-
+      image = user.image64
 
       var response = {
         totalClicks: 123,
@@ -42,6 +43,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
         basicDesc: basicDesc,
         detailDesc: detailedDesc,
         active: active,
+        profileImage: image,
         contactInformation: {
           work: "Plumbing",
           website: website,
