@@ -18,6 +18,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
   var active = "";
   var image = "";
   var adress = "";
+  var service= "";
 
 
   User.findOne({ _id: userId }).then(user => {
@@ -35,6 +36,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
       active = user.active
       image = user.image64
       adress = user.adress
+      service = user.service
 
       var response = {
         totalClicks: 123,
@@ -46,6 +48,7 @@ router.get('/getdata', tokenVerification, async (req, res) => {
         detailDesc: detailedDesc,
         active: active,
         profileImage: image,
+        service:service,
         contactInformation: {
           work: "Plumbing",
           website: website,

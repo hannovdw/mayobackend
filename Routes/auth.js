@@ -38,7 +38,8 @@ router.post('/register', async (req, res) => {
                 image64: req.body.image64,
                 imageName: req.body.imageName,
                 active: req.body.active,
-                adress: req.body.adress
+                adress: req.body.adress,
+                service: req.body.service
             });
 
             

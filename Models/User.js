@@ -52,7 +52,8 @@ const userSchema = new mongoose.Schema({
     image64: String,
     imageName: String,
     active: Boolean,
-    adress: String
+    adress: String,
+    service:String
 
 });
 
