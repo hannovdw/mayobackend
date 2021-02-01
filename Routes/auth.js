@@ -37,7 +37,8 @@ router.post('/register', async (req, res) => {
                 facebookURL: req.body.facebook,
                 image64: req.body.image64,
                 imageName: req.body.imageName,
-                active: req.body.active
+                active: req.body.active,
+                adress: req.body.adress
             });
 
             

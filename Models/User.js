@@ -51,7 +51,8 @@ const userSchema = new mongoose.Schema({
     facebookURL: String,
     image64: String,
     imageName: String,
-    active: Boolean
+    active: Boolean,
+    adress: String
 
 });
 
