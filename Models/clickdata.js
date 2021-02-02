@@ -10,10 +10,7 @@ const clickSchema = new mongoose.Schema({
         max: 255,
         min: 5
     },
-    clickIP: String,
-    clickDate: String,
-    clickTime: String,
-    clickRegion: String
+    clickDateTime: String,
 
 });
 module.exports = mongoose.model('clickData', clickSchema);
