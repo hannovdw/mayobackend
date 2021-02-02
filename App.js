@@ -11,6 +11,7 @@ const dotenv = require('dotenv');
 const userRoute = require('./Routes/user');
 const homeRoute = require('./Routes/home');
 const activateRoute = require('./Routes/activation');
+const profileUpdate = require('./Routes/profileUpdate');
 
 //DOTENV
 dotenv.config();
@@ -41,3 +42,4 @@ app.use('/auth', authRoute);
 app.use('/user', userRoute);
 app.use('/home', homeRoute);
 app.use('/active',activateRoute);
+app.use('/listing',profileUpdate);
