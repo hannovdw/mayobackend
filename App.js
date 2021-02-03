@@ -12,6 +12,7 @@ const userRoute = require('./Routes/user');
 const homeRoute = require('./Routes/home');
 const activateRoute = require('./Routes/activation');
 const profileUpdate = require('./Routes/profileUpdate');
+const searchListing = require('./Routes/search');
 
 //DOTENV
 dotenv.config();
@@ -43,3 +44,4 @@ app.use('/user', userRoute);
 app.use('/home', homeRoute);
 app.use('/active',activateRoute);
 app.use('/listing',profileUpdate);
+app.use('/service',searchListing);
