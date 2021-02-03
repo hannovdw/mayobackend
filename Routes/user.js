@@ -19,6 +19,8 @@ router.get('/getdata', tokenVerification, async (req, res) => {
   var image = "";
   var adress = "";
   var service= "";
+  var suburb = "";
+  var city = "";
 
 
   User.findOne({ _id: userId }).then(user => {
@@ -37,12 +39,16 @@ router.get('/getdata', tokenVerification, async (req, res) => {
       image = user.image64
       adress = user.adress
       service = user.service
+      suburb = user.suburb
+      city = user.city
 
       var response = {
         totalClicks: 123,
         monthlyClicks: 20,
         name: companyName,
         location: adress,
+        suburb: suburb,
+        city: city,
         hourlyRate: hourlyRate,
         basicDesc: basicDesc,
         detailDesc: detailedDesc,

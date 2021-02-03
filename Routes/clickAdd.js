@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = require('express').Router();
-const ClickData = require('../Models/Clickdata');
+const ClickData = require('../Models/clickdata');
 
 var dateString = '';
 

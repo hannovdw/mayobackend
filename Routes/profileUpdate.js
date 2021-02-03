@@ -10,7 +10,6 @@ router.post('/update', async (req, res) => {
         { "userEmail":req.body.userEmail}, 
         { 
             "$set": { 
-                "userEmail": req.body.userEmail,
                 "companyName": req.body.companyName,
                 "basicDesc": req.body.basicDesc,
                 "detailDesc": req.body.detailDesc,
@@ -22,7 +21,9 @@ router.post('/update', async (req, res) => {
                 "facebookURL": req.body.facebookURL,
                 "image64": req.body.image64,
                 "imageName": req.body.imageName,
-                "adress": req.body.adress
+                "adress": req.body.adress,
+                "suburb": req.body.suburb,
+                "city": req.body.city
             }
         } 
     );

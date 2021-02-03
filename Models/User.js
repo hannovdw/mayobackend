@@ -53,7 +53,9 @@ const userSchema = new mongoose.Schema({
     imageName: String,
     active: Boolean,
     adress: String,
-    service:String
+    service:String,
+    suburb: String,
+    city: String
 
 });
 
