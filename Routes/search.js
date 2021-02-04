@@ -10,7 +10,7 @@ router.get('/search', async (req, res) => {
             {"adress":{"$in":req.query.adress}}
         ]}
     ).then((data) => {
-        return res.status(200).json(data.slice(req.query.start, (parseInt(req.query.start) + 5)));
+        return res.status(200).json(data);
     })
 
 })
