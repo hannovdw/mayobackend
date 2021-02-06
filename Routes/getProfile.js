@@ -4,17 +4,17 @@ const User = require('../Models/User');
 
 router.get('/getUser', async (req, res) => {
 
-  const userId = req.user._id;
+  const userMail = req.query.userEmail;
 
-  var companyName = "fok oll";
-  var userEmail = "niks";
-  var cellNum = "kont oll";
-  var website = "warie";
-  var basicDesc = "mmmm";
-  var detailedDesc = "mmmm";
-  var instagram = "mmm";
-  var twitter = "mmm";
-  var facebook = "mmm";
+  var companyName = "";
+  var userEmail = "";
+  var cellNum = "";
+  var website = "";
+  var basicDesc = "";
+  var detailedDesc = "";
+  var instagram = "";
+  var twitter = "";
+  var facebook = "";
   var active = "";
   var image = "";
   var adress = "";
@@ -23,7 +23,7 @@ router.get('/getUser', async (req, res) => {
   var city = "";
 
 
-  User.findOne({ _id: userId }).then(user => {
+  User.findOne({ userEmail: userMail }).then(user => {
     if (user) {
       companyName = user.companyName
       userEmail = user.userEmail
@@ -56,7 +56,7 @@ router.get('/getUser', async (req, res) => {
         profileImage: image,
         service:service,
         contactInformation: {
-          work: "Plumbing",
+          work: service,
           website: website,
           mail: userEmail,
           phone: cellNum,
